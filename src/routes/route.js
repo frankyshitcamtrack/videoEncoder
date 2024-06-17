@@ -2,10 +2,10 @@ const express = require('express');
 
 const {convertVideo} = require('../controllers/Controller');
 
-const Router = express.Router();
+const convertRouter = express.Router();
 
-Router.post('/convert-video',convertVideo);
+convertRouter.post('/video',convertVideo);
 
 
 
-module.exports= Router;
+module.exports=convertRouter;

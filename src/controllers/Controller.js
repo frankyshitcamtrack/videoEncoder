@@ -15,8 +15,7 @@ const downloadPath = path.resolve(`./public/assets/video/${id}.mp4`)
   try {
     setTimeout(async () => {
     const video= await downloadVideo(url,downloadPath,fullUrl);
-    console.log(video);
-    return res.status(200).json({'url':video});
+    return res.status(200).download(video);
     }, 15000)
   
   } catch (error) {

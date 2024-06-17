@@ -37,6 +37,8 @@ downloadVideo(url,downloadPath,'https://whattsapi.camtrack.net/');
 
  */
 
+app.use("/conversion", Router);
+
 app.get("/",(req,res)=>{
     res.setHeader('Content-Type','text/html')
     res.end('<h1>Project started : Video converter</h1>');
