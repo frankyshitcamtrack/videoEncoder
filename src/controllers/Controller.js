@@ -6,7 +6,6 @@ const {v4 : uuidv4} = require('uuid');
 
 async function convertVideo(req, res) {
 const url = req.body.url;
-
 const protocol = req.protocol;
 const hostname = req.get('host')
 const fullUrl = `${protocol}://${hostname}`;
@@ -16,7 +15,7 @@ const downloadPath = path.resolve(`./public/assets/video/${id}.mp4`)
   try {
     setTimeout(async () => {
     const video= await downloadVideo(url,downloadPath,fullUrl);
-    res.status(200).download(video)
+    res.status(200).json({'url':video});
     }, 15000)
   
   } catch (error) {
