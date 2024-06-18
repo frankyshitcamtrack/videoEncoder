@@ -10,14 +10,16 @@ async function convertVideo(req, res) {
     const protocol = req.protocol;
     const hostname = req.get('host')
     const fullUrl = `${protocol}://${hostname}`;
-
+ 
     const id = uuidv4();
     const downloadPath = path.resolve(`./public/assets/video/${id}.mp4`)
+
     const video = await downloadVideo(url, downloadPath, fullUrl);
 
     if (video) {
+      console.log(`${process.cwd()}/${video}`);
       setTimeout(async () => {
-        return res.status(200).download(video);
+        return res.status(200).download(`${process.cwd()}/${video}`);
       }, 15000)
     } else {
       res.sendStatus(404);

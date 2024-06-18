@@ -11,6 +11,8 @@ async function downloadVideo(url,outputDownloadPath,fullUrl) {
     const writer = fs.createWriteStream(outputDownloadPath);
     const filePath = `${fullUrl}/${output}`
     const newPath= filePath.replace('/public','')
+    const p= `/assets/evidence/${evidencName}.mp4`
+
     axios({
         method: 'get',
         url: url,
@@ -30,18 +32,24 @@ async function downloadVideo(url,outputDownloadPath,fullUrl) {
                        resolve(true);
                    }
                });
-           })
+           }) .then(async () => {
+            console.log('video Downloaded  now converting...');
+        })
                .then(async () => {
                    await convertVideo(outputDownloadPath, output)
                })
-               .then(()=>{
+               .then(async () => {
+                console.log('video converted');
+            })
+              
+         .then(()=>{
                 setTimeout(async()=>{
                     await deleteMedia(outputDownloadPath);
-                  },600000);
-               }) 
+                  },300000);
+               })  
        })
-  
-    return newPath
+    
+    return output;
 }
 
 module.exports={downloadVideo}

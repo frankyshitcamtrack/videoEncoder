@@ -11,10 +11,9 @@ async function convertVideo(link,output) {
    await hbjs.spawn(options)
     .on('error', console.error)
     .on('output', console.log)
-
     setTimeout(()=>{
       deleteMedia(output);
-    },600000); 
+    },300000);  
 
     return output;
 }
