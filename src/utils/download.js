@@ -10,7 +10,7 @@ async function downloadVideo(url,outputDownloadPath,fullUrl) {
     const output = `public/assets/evidence/${evidencName}.mp4`
     const writer = fs.createWriteStream(outputDownloadPath);
     const filePath = `${fullUrl}/${output}`
-    const newPath= output.replace('/public','')
+    const newPath= output.replace('public','')
     const p= `/assets/evidence/${evidencName}.mp4`
 
     axios({
