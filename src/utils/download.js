@@ -49,7 +49,7 @@ async function downloadVideo(url,outputDownloadPath,fullUrl) {
                })  
        })
     
-    return newPath;
+    return output;
 }
 
 module.exports={downloadVideo}
