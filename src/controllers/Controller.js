@@ -19,7 +19,7 @@ async function convertVideo(req, res) {
     if (video) {
       console.log(`${process.cwd()}/${video}`);
       setTimeout(async () => {
-        return res.status(200).download(`${process.cwd()}/${video}`);
+        return res.status(200).download(`${video}`);
       }, 15000)
     } else {
       res.sendStatus(404);
